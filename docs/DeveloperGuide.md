@@ -69,7 +69,7 @@ In light of the recent COVID-19 pandemic. The weakness of modern healthcare syst
 Many of which are unsatisfactory in coping with the current needs.
 HealthVault was thus created to improve the efficiency of hospital and healthcare information management.
 <br>
-**HealthVault** is a desktop application made for healthcare workers as their one-stop application for recording and 
+**HealthVault** is a desktop application made for nurses as their one-stop application for recording and 
 accessing critical patient or staff information.
 It is optimized for the Command Line Interface, where an experienced typist will be able to 
 make full use of the informative and minimalistic GUI to achieve significant gains in efficiency
@@ -300,7 +300,7 @@ Whenever a user input is given to the Staff Menu, the following steps will occur
 
 **Implementation:**
 
-The function Add takes in 4 compulsory fields (Staff ID, Name, Age, Specialisation) to create the Staff Object and adds it to an aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. A StaffAddCommand object is created. StaffAddCommand object will be executed to create the Staff Object which will be added to the aggregation of Staff Objects.
+The function Add takes in 4 compulsory fields (Staff ID, Name, Age, Specialisation) to create the Staff Object and adds it to an collection of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. A StaffAddCommand object is created. StaffAddCommand object will be executed to create the Staff Object which will be added to the collection of Staff Objects.
 
 Invalid Input includes:
 
@@ -323,7 +323,7 @@ Invalid Input includes:
 	- checkStaffID()	
 	- checkDuplicateStaffID()
 	- checkStaffAge()
-	- checkBlankInput2()
+	- checkBlankInput()
 	- invalidCharactersStaffChecker()
 
 **Creating StaffAddCommand object**
@@ -335,14 +335,14 @@ Invalid Input includes:
 
 5. StaffInstance then executes the StaffAddCommand object to begin the process of creating the Staff object
 
-6. `StaffAdd.execute()` will call the function in `StaffList.add()`
+6. `StaffAdd.execute()` will call the function `StaffList.add()`
 
-7. `StaffList.add()` will instantiate a new Staff object and add it to the ArrayList<Staff> StaffList. which contains all the Staff Objects. 
+7. `StaffList.add()` will instantiate a new Staff object and add it to the ArrayList<Staff> StaffList, which contains all the Staff Objects. 
 
 **Saving Staff Objects into .txt file**
 
-8. `StaffList.add()` then calls `staffStorage.writeToFile()` which starts the process of writing the details of all existing Staff Objects, within the StaffList into a specified .txt file.
-9. `staffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
+8. `StaffList.add()` then calls `StaffStorage.writeToFile()` which starts the process of writing the details of all existing Staff Objects, within the StaffList into a specified .txt file.
+9. `StaffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
 10. Data is written and saved.
 11. Control is then returned to StaffInstance.
 
@@ -351,11 +351,11 @@ Invalid Input includes:
 Deciding the main data structure, ArrayList or Dictionary:
 
 Option 1 (Final choice): Using an ArrayList
-* Pros: Able to access a staff information given the unique key and allows for more flexibility in the methods used.
+* Pros: Flexibility in accessing the information in Staff objects.
 * Cons: Slow accessing of items when searching for information in ArrayList compared to Dictionary.
 
 Option 2 : Using a Dictionary
-* Pros: Able utilise the key function of dictionary to locate items quickly.
+* Pros: Able to utilise the key function of dictionary to locate items quickly.
 * Cons: Multiple items to be stored for 1 single key in the dictionary.
 * Cons: Listing all information might be rather troublesome.
 
@@ -365,7 +365,7 @@ Option 2 : Using a Dictionary
 
 **Implementation:**
 
-The function Delete takes in 1 compulsory field (Staff ID) to identify and delete the Staff Object from the aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a StaffDeleteCommand object is created. StaffDeleteCommand object will be executed to iterate through the aggregation of Staff Objects. If Staff Object exists, it will be removed. Else an error message will be displayed.
+The function Delete takes in 1 compulsory field (Staff ID) to identify and delete the Staff Object from the collection of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a StaffDeleteCommand object is created. StaffDeleteCommand object will be executed to iterate through the collection of Staff Objects. If Staff Object exists, it will be removed. Else an error message will be displayed.
 
 Invalid Input includes:
 
@@ -394,9 +394,9 @@ Invalid Input includes:
 
 **Saving changed Staff Objects into .txt file**
 
-7. `StaffList.delete()` then calls staffStorage.writeToFile() which starts the process of writing the changed details of Staff Objects, within the StaffList into a specified .txt file.
+7. `StaffList.delete()` then calls StaffStorage.writeToFile() which starts the process of writing the changed details of Staff Objects, within the StaffList into a specified .txt file.
 
-8. `staffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
+8. `StaffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
 9. Data is written and saved.
 10. Control is then returned to StaffInstance.
 
@@ -418,7 +418,7 @@ Option 2 : Using an iterator
 
 **Implementation:**
 
-The function list takes in 1 option field (nurses/doctors) to identity and list the category of Staff Objects required from the aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a StaffListCommand object is created. StaffListCommand object will be executed to iterate through the aggregation of Staff Objects. Staff Objects will then be displayed based on the user given input.
+The function list takes in 1 optional field (nurses/doctors) to identify and list the category of Staff Objects required from the collection of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a StaffListCommand object is created. StaffListCommand object will be executed to iterate through the collection of Staff Objects. Staff Objects will then be displayed based on the user given input.
 
 Invalid Input includes:
 
@@ -462,7 +462,7 @@ Option 2 : Only have a general list function to see all staff information.
 
 **Implementation:**
 
-The function Add takes in 1 compulsory field (keyword) to find the relevant Staff Objects within the aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. The given input is used to match with every single field of the Staff Object. If there is a match, the Staff Object will be displayed. Else, an error message will be displayed.
+The function Add takes in 1 compulsory field (keyword) to find the relevant Staff Objects within the collection of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. The given input is used to match with every single field of the Staff Object. If there is a match, the Staff Object will be displayed. Else, an error message will be displayed.
 
 Invalid Input includes:
 
@@ -556,11 +556,11 @@ Invalid Input includes:
 2. `checkAdd()` will call the following methods in sequence:
 
 	- emptySpaceCheck();
-		- checkLength();
-		- checkID();
-		- checkAge();
-		- illegalCharacterChecker();
-		- checkGender();
+	- checkLength();
+	- checkID();
+	- checkAge();
+	- illegalCharacterChecker();
+	- checkGender();
 
 **Creating PatientAddCommand**
 
@@ -573,7 +573,7 @@ Invalid Input includes:
 
 6. `PatientAdd.execute()` will call the function in `PatientList.add()`
 
-7. `PatientList.add()` will instantiate a new Patient object and add it to the ArrayList<Patient> PatientList. which contains all the Patient Objects.
+7. `PatientList.add()` will instantiate a new Patient object and add it to the ArrayList<Patient> PatientList, which contains all the Patient Objects.
 
 **Saving Patient Objects into .txt file**
 
@@ -593,13 +593,14 @@ Option 1 (Final choice): Using an ArrayList
 Option 2 : Using a List
 * Pros: Able to load and store very fast and also able to perform functions like "list" fast.
 * Cons: No random access and thus made certain functions more troublesome code wise.
+
 <br>
 
 ### 5.2.3 Patient Delete
 
 **Implementation:**
 
-The function Delete takes in 1 compulsory field (Patient ID) to identity and delete the Patient Object from the list of Patient Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a PatientDeleteCommand object is created. The PatientDeleteCommand object will be executed to iterate through the list of Patient Objects. If Patient Object exists, it will be removed. Else an error message will be displayed.
+The function Delete takes in 1 compulsory field (Patient ID) to identify and delete the Patient Object from the list of Patient Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a PatientDeleteCommand object is created. The PatientDeleteCommand object will be executed to iterate through the list of Patient Objects. If Patient Object exists, it will be removed. Else an error message will be displayed.
 
 Invalid Input includes:
 
@@ -626,7 +627,7 @@ Invalid Input includes:
 5. `PatientDelete.execute()` will call the function `PatientList.deletePatient()`
 6. `PatientList.deletePatient()` will iterate through the objects in ArrayList<Patient> PatientList. The Patient Object referenced by the input given by the user will be deleted.
 
-**Saving changed Staff Objects into .txt file**
+**Saving changed Patient Objects into .txt file**
 
 7. PatientInstance then calls `PatientStorage.storePatients()` which starts the process of writing the details of all existing Patient Objects, within the PatientList into a specified .txt file.
 8. `PatientStorage.storePatients()` then calls `fileInit()` which ensures that the specified .txt file exists.
@@ -644,7 +645,8 @@ Option 1 (Final choice): Not using an iterator
 Option 2 : Using an iterator
 * Pros: An iterator allows for more flexible data access as it allows for more efficient deletion of a block of data, and it helps to keep the location of where data was manipulated.
 * Cons: Maintenance of the iterator is very difficult, and it may not be worth the effort to implement when solutions exist that only require inbuilt functions.
-  <br>
+
+<br>
   
 ### 5.2.4 Patient List
 
@@ -689,7 +691,7 @@ Option 2 : Printing the patients in blocks with no common rows or columns.
 * Pros: Easy to implement and may be easier to show a single patient.
 * Cons: Very difficult to view when the list of patients became increasingly large.
 
-  <br>
+<br>
 
 ### 5.2.5 Patient Find
 
@@ -747,7 +749,8 @@ Option 1 (Final choice): Allowing case-insensitive inputs.
 Option 2 : Only allowing case-sensitive inputs.
 * Pros: Easy to implement and can be more specific.
 * Cons: Harder to consistently type and very punishing for users who don't know if what they are searching for has capital letters.
-  <br>
+  
+<br>
 
 ###  5.3 Doctor Appointment
 
@@ -820,7 +823,7 @@ Invalid Input includes:
 **Saving DoctorAppointment Objects into .txt file**
 
 7. `AppointmentList.addAppointment()` then calls `DoctorAppointmentStorage.writeToFile()` which all existing DoctorAppointment Objects within the appointmentList is written into a DoctorAppointment.txt file.
-8. `staffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
+8. `DoctorAppointmentStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
 9. Control is then returned to DoctorAppointmentInstance.
 
 <br>
@@ -829,7 +832,7 @@ Invalid Input includes:
 
 **Implementation:**
 
-The delete function takes in 1 compulsory field (Doctor ID/ Appointment ID) to identity and delete the corresponding DoctorAppointment Object from ArrayList <DoctorAppointment> appointmentList . Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a DoctorAppointmentDeleteCommand object is created and executed in which the program will iterate through appointmentList. If the desired DoctorID or Appointment ID exists, it will be removed. Else an error message will be displayed.
+The delete function takes in 1 compulsory field (Doctor ID/ Appointment ID) to identify and delete the corresponding DoctorAppointment Object from ArrayList <DoctorAppointment> appointmentList . Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a DoctorAppointmentDeleteCommand object is created and executed in which the program will iterate through appointmentList. If the desired DoctorID or Appointment ID exists, it will be removed. Else an error message will be displayed.
 
 Invalid Input includes:
 
@@ -863,7 +866,7 @@ Invalid Input includes:
 6. `AppointmentList.deleteAppointment()` is called, which iterates through the objects in ArrayList<DoctorAppointment> appointmentList. The DoctorAppointment Object matching the input given by the user will be removed from the array list.
 
 **Saving changed DoctorAppointment Objects into .txt file**
-
+ 
 7. `AppointmentList.deleteAppointment()` then calls `DoctorAppointmentStorage.writeToFile()` which rewrites the updated appointmentList into the DoctorAppointment.txt file.
 8. Control is then returned to DoctorAppointmentInstance.
 
@@ -960,6 +963,8 @@ Whenever a user input is given to the Nurse Schedule Menu, the following steps w
 
 6. Based on the recognised command, the relevant execution will be carried out.
 
+<br>
+
 ### 5.4.2 Nurse Schedule Add
 
 **Implementation**
@@ -997,6 +1002,7 @@ Invalid Inputs include:
 
 5. Control is then returned to NurseScheduleInstance.
 
+<br>
 
 ### 5.4.3 Nurse Schedule Delete
 
@@ -1033,6 +1039,8 @@ Invalid Inputs include:
 
 6. Control is then returned to NurseScheduleInstance.
 
+<br>
+
 ### 5.4.4 Nurse Schedule List all
 
 **Implementation**
@@ -1066,6 +1074,7 @@ Invalid Inputs include:
 
 6. `listAllSchedules()` iterates through the arraylist of Nurse Schedule objects, printing all schedules.
 
+<br>
 
 ### 5.4.5 Nurse Schedule List by Nurse ID
 
@@ -1250,7 +1259,7 @@ This feature will be able to generate the daily schedule for individual nurses w
 
 ### 5.6.2 Personalized Account Login
 
-This feature will allow medical personnel to have a personalized account within HealthVault, enabling them to only access relevant functionalities of the app. By cutting down on the unnecessary information one has to deal with, the team believes this will aid medical personnel working in a high-stress environment.
+This feature will allow nurses to have a personalized account within HealthVault, enabling them to only access relevant functionalities of the app. By cutting down on the unnecessary information one has to deal with, the team believes this will aid nurses working in a high-stress environment.
 
 ### 5.6.3 Inventory Alerts
 
@@ -1277,7 +1286,7 @@ HealthVault primarily targets nurses. Its features optimize it for users seeking
 <br>
 With its organized and portable database and its features to improve efficiency,
 HealthVault aspires to help its users achieve the following results:
-* Improve working speed of healthcare staff, as they can store and retrieve critical information quickly and accurately.
+* Improve working speed of nurses, as they can store and retrieve critical information quickly and accurately.
 * Minimize administrative errors with its inbuilt cross validation.
 * Easy implementation within a hospital environment with minimal setup steps and data re-usability.
 
@@ -1300,6 +1309,7 @@ its users save those precious seconds.
 |   * * *  |  nurse  |              quickly add/delete inventories                   |           manage our inventories better          |
 |   * * *  |  nurse  |                quickly look up inventories                    |  plan what and when to restock our supplies      |
 |     *    |  nurse  |       have the program recognize slight errors in typing      | have leeway working in a high-stress environment |
+
 <br>
 
 ## Appendix C: Non Functional Requirements
@@ -1312,7 +1322,7 @@ its users save those precious seconds.
 
 * The data retrieval time should return near instant without feeling a pause in between command and output.
 
-* New features for example, auto generation of nurses’ schedules and personalized account login are currently in the works to demonstrate that this program is still being developed to be better and accommodate more of the concerns medical personnel have. 
+* New features for example, auto generation of nurses’ schedules and personalized account login are currently in the works to demonstrate that this program is still being developed to be better and accommodate more of the concerns nurses have. 
 
 * Application would be affordable to the general masses.
 
@@ -1328,7 +1338,7 @@ its users save those precious seconds.
 
 * *Illegal Characters* - Non-alphanumeric characters
  
-* *Aggregation* - Any collection of objects. In this case, we utilise an ArrayList to store all our objects. 
+* *Collection* - Any group of objects. In this case, we utilise an ArrayList to store all our objects. 
  
 * *Features* - In this case, we refer to the entire interaction with the various types of objects. E.g. any interaction with Staff/Patient/Doctor Appointment/Nurse Schedules/Inventory.
  
@@ -1409,7 +1419,6 @@ Choose a directory from the Start Menu
 	Type "help" for Inventory menu commands
 	
 	
-
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6. **Test case:** `help` (where you will be directed to the Help Menu)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
@@ -1430,16 +1439,11 @@ Choose a directory from the Start Menu
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Goodbye! Have a nice day!```
 	 
-<br/><br/>
+<br>
 
 ### Choose which feature you want to use from Staff Menu	 
 1. Adding a new staff
 
->:information_source: Important notes about the input format
->1. Make sure that the inputted user ID starts with a D (for doctor ID) or N (for nurse ID)  and has **exactly** 5 digits in the number following!   
->2. Any input field in HealthVault only accepts space and alphanumeric characters
->3. The age field input should be a positive integer starting from 0 but less than 150
->
 >:information_source: Important notes about the input format
 >1. Make sure that the inputted user ID starts with a D (for doctor ID) or N (for nurse ID)  and has **exactly** 5 digits in the number following!   
 >2. Any input field in HealthVault only accepts space and alphanumeric characters
@@ -1457,8 +1461,7 @@ Choose a directory from the Start Menu
 	Error in Staff ID input
 	Please input with the following format [D/N][5 digit ID number]
 
-
-<br/>
+<br>
  
 2. Deleting staff
 
@@ -1476,7 +1479,7 @@ Choose a directory from the Start Menu
 	Error in Staff ID input
 	Please input with the following format [D/N][5 digit ID number]
 
-<br/>
+<br>
 
 3. Listing all doctors and nurses
 
@@ -1504,9 +1507,11 @@ Choose a directory from the Start Menu
 	list/nurses
 	list/doctors
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 **Test case:** ```list/doctors ```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Positive Test case:** ```list/doctors ```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
 	
 	ID         | Name       | Age   | Specialisation      
@@ -1527,9 +1532,9 @@ Choose a directory from the Start Menu
 	D12345     | MingShun   | 30    | Pediatrician    
 	D12355     | Alex       | 28    | Oncology
 			
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list/blahblah`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list/blahblah`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 
 
 	Invalid List command parameter
@@ -1539,7 +1544,7 @@ Choose a directory from the Start Menu
 		list/doctors
 
 	
-<br/>
+<br>
 
 4. Finding a staff
 
@@ -1562,7 +1567,7 @@ Choose a directory from the Start Menu
 
 	OOPS! There are too few inputs for this command
 
-<br/>
+<br>
 
 5. Returning to Start Menu
 
@@ -1570,7 +1575,7 @@ Choose a directory from the Start Menu
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start menu!```
 
-<br/>
+<br>
 
 6. Directing to help function
 
@@ -1591,7 +1596,7 @@ Choose a directory from the Start Menu
 	return    Returns you to the Start Menu!                              -                                 
 	
 
-<br/><br/>
+<br>
 
 ### Choose which feature you want to use from Patient Menu	 
 1. Adding a new patient
@@ -1674,34 +1679,37 @@ Please input with the following format [P][5 digit ID number]
 >1. Any keyword input will be searched through every field of Patient details. i.e. It can be used to search Patient ID, name, age, illness, medication required.
 > The keyword input can be case-insensitive and still find matches in the database.
 > 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.1
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Positive Test case:** ```find/P55555```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Positive Test case:** ```find/P55555```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
 	
 	ID       | Name                 | Age    | Gender   | Illness              | Medication Required 
 	____________________________________________________________________________________________________
 	P55555   | Sam                  | 40     | M        | Fever                | Paracetamol    
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** ```find/```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** ```find/```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** `OOPS! There are too few inputs for this command`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** `OOPS! There are too few inputs for this command`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Positive Test case:** ```find/Sam```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.2
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Positive Test case:** ```find/Sam```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
 
 	ID       | Name                 | Age    | Gender   | Illness              | Medication Required 
 	____________________________________________________________________________________________________
 	P55555   | Sam                  | 40     | M        | Fever                | Paracetamol    
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** ```find/Same```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** ```find/Same```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** `There is no patient in the list that matches your keywords!`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** `There is no patient in the list that matches your keywords!`
 
-<br/>
+<br>
 
 5. Returning to Start Menu
 
@@ -1709,7 +1717,7 @@ Please input with the following format [P][5 digit ID number]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start menu!```
 
-<br/>
+<br>
 
 6. Directing to help function
 
@@ -1730,7 +1738,7 @@ Please input with the following format [P][5 digit ID number]
 	return    Returns you to the Start Menu!                              -                                
 	
 
-<br/><br/>
+<br>
 
 ### Choose which feature you want to use from Appointments' Menu
 
@@ -1755,8 +1763,7 @@ Error in Doctor ID input
 Please input with the following format [D][5 digit ID number]
 ```
 
-	
-<br/>
+<br>
  
 2. Deleting an appointment
 
@@ -1863,7 +1870,7 @@ Error in ID input
 Please input with the following format [all/D/A] followed by [5 digit ID number]
 ```
 	
-<br/>
+<br>
 
 4. Returning to Start Menu
 
@@ -1871,7 +1878,7 @@ Please input with the following format [all/D/A] followed by [5 digit ID number]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to Start Menu!```
 
-<br/>
+<br>
 
 5. Directing to help function
 
@@ -1890,7 +1897,7 @@ Please input with the following format [all/D/A] followed by [5 digit ID number]
 	return    Returns you to the Start Menu!                   
 	
 
-<br/><br/>
+<br>
 
 
 ### Choose which feature you want to use from Schedules' Menu	 
@@ -1916,7 +1923,7 @@ Please ensure that the ID includes 5 numbers after "N" or "P"
 eg. N12345 or P67891
 ```
 	
-<br/>
+<br>
  
 2. Deleting schedule
 
@@ -1933,7 +1940,7 @@ eg. N12345 or P67891
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** `NurseID does not exist! Please check Staff List and try again!`
 
-<br/>
+<br>
 
 3. Listing schedules
 
@@ -1978,7 +1985,7 @@ OOPS! Please check to see if your command is properly formatted!
 Please input with the following format: list/[NurseID/all]
 ```
 
-<br/>
+<br>
 
 4. Returning to Start Menu
 
@@ -1986,7 +1993,7 @@ Please input with the following format: list/[NurseID/all]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start menu!```
 
-<br/>
+<br>
 
 5. Directing to help function
 
@@ -2005,7 +2012,7 @@ Please input with the following format: list/[NurseID/all]
 	return    Returns you to the Start Menu!                                   -    
 	
 
-<br/><br/>
+<br>
 
 ### Choose which feature you want to use from Inventory Menu
 1. Adding a new item or increasing quantity of current items.
@@ -2024,7 +2031,7 @@ Please input with the following format: list/[NurseID/all]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Please enter a valid price!```
 
-<br/>
+<br>
 
 2. Decreasing quantity of items.
 
@@ -2039,7 +2046,7 @@ Please input with the following format: list/[NurseID/all]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```OOPS! This item does not exist in the Inventory!```
 
-<br/>
+<br>
 
 3. Listing all items
 
@@ -2058,7 +2065,7 @@ Please input with the following format: list/[NurseID/all]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```OOPS! There are too many inputs for this command```
 
-<br/>
+<br>
 
 4. Returning to Start Menu
 
@@ -2066,7 +2073,7 @@ Please input with the following format: list/[NurseID/all]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start Menu!```
 
-<br/>
+<br>
 
 5. Directing to help function
 
@@ -2085,5 +2092,4 @@ Please input with the following format: list/[NurseID/all]
 	delete    Deletes the Inventory item from the list!                   delete/[Item Name]/[Quantity]                                
 	return    Returns you to the Start Menu!                              -            
 
-
-<br/><br/>
+<br>
