@@ -1289,7 +1289,7 @@ its users save those precious seconds.
 ## Appendix B: User Stories
 
 | Priority | As a... |                          I want to...                         |                 So that I can...                 |
-|:--------:|:--------:|:-------------------------------------------------------------:|:------------------------------------------------:|
+|:--------:|:---------:|:-------------------------------------------------------------:|:------------------------------------------------:|
 |   * * *  |  nurse  |              quickly refer to usage instructions              |      quickly get on track with the workflow      |
 |   * * *  |  nurse  |                    add a new staff/patient                    |     record information of staff and patients     |
 |   * * *  |  nurse  |                     delete staff/patients                     |          remove entries i no longer need         |
